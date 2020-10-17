@@ -1,0 +1,84 @@
+import random
+from datetime import datetime
+def greet_and_introduce():
+    responses = [
+                    "Hi there! I am bot. I can help yout do some calculations. May I know your name ?",
+                    "Hi..."
+                ]
+    return random.choice(responses)
+def get_timeofday_greeting():
+    current_time = datetime.now()
+    timeofday_greeting = "Good morning"
+    if current_time.hour > 12 and current_time.hour<17:
+        timeofday_greeting = "Good Afternoon"
+    elif current_time.hour > 17 and current_time.hour<22:
+        timeofday_greeting = "Good evening"
+    elif current_time.hour > 22:
+        timeofday_greeting = "Hi, That's late"
+    return timeofday_greeting
+
+def welcome(name):
+    messages = [
+        "Nice to meet you!"+" "+name,
+        "Good to see you."
+    ]
+    print (get_timeofday_greeting(),random.choice(messages))
+def show_menu():
+    print("The things I can do are ..")
+    print("1.Know the correct crops for your soil")
+    print("2.End of this chat")
+    print("------")
+    try: 
+        return int(input("Enter your choice"))
+    except:
+        print("Only enter choice from above mentioned list")
+        return int(input("Enter your choice"))
+def typesofsoils():
+	print("please select number of your desired soil")
+	print("1.Black soil")
+	print("2.Red soil or yellow soil")
+	print("3.Aluvial soil")
+	print("4.Laterite soil")
+	print("5.Arid soil")
+	print("6.Forest or mountain soil")
+	print("7.Desert soil")
+	print("8.other soils")
+def correct_plant():
+    try:
+        soil_type=int(input("please enter number of your desired soil mentioned above:"))
+        if soil_type==1:
+    	    print( "cotton,rice,sugarcane,wheat,jowar,sunflower,ceralcrops,citrus fruits,vegetables,tobacco,groundnut,oil seedcrops and millets")
+        elif soil_type==2:
+    	    print("rice,wheat,sugarcane,groundnut,maize/corn,ragi,potato,oil seeds,pulses,millets,fruits such as orange,mango,citrus")
+        elif soil_type==3:
+    	    print("Tobacco,cotton,rice,wheat,bajra,jowar,pea,pigeon pea,chick pea,black gram,green gram,mustard,linseed,sesam,barle,jute,maize,any oil seeds")
+        elif soil_type==4:
+    	    print("cotton,rice,wheat,tea,cofee,rubber,coconut,cashews,these are used to make bricks due to presence large amounts of iron")
+        elif soil_type==5:
+    	    print("wheat,cotton,corn,millets,pulses,barley")
+        elif soil_type==6:
+    	    print("tea,spices,wheat,barly,maize,coffee,tropical fruits and temperature fruits")
+        elif soil_type==7:
+    	    print("millet and barly")
+        elif soil_type==8:
+    	    print("not suitable for cultivation")
+    except:
+    	print("please print number from the above mentioned list")
+    	correct_plant()
+ 
+def bot():
+    greet_and_introduce()
+    name = input("Your name: ")
+    welcome(name)
+    choice = show_menu()
+    if (choice > 1 or choice <= 0):
+        print("Please enter right number shown above  ^")
+        choice = show_menu()
+    while (choice <= 1 and choice >0) :
+        if choice == 1:
+            typesofsoils()
+            correct_plant()
+        else:
+            print("Come back again !")
+        choice=show_menu()
+bot()
